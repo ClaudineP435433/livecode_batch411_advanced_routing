@@ -1,0 +1,49 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @garden.banner_url %>);">
+  <div class="container">
+    <h1><%= @garden.name %></h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-xs-12 col-md-8">
+      <div class="row mt-3">
+        <% @garden.plants.each do |plant| %>
+          <div class="col-xs-12 col-md-4">
+           <div class="card-trip">
+            <img src="<%= plant.image_url %>" />
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= plant.name %></h2>
+                <p><%= link_to "Supprimer", plant_path(plant), method: :delete, data: {confirm: "Are you sure ?"} %></p>
+              </div>
+<!--               <h2 class="card-trip-pricing">£99.99</h2>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> -->
+            </div>
+          </div>
+
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+      <%= simple_form_for [@garden, @plant] do |f| %>
+        <%= f.input :name %>
+        <%= f.input :image_url %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+</div>
